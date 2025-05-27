@@ -644,7 +644,7 @@ const generatePdfDocumentConstanciaDeEstudio = async (student: Students) => {
             disabled={isLoading}
             className={`w-full py-2 }`}
           >
-            {isLoading ? "Buscando..." : "Buscar"}
+            {isLoading ? "Buscando..." : "Buscar Estudiante "}
           </Button>
         </div>
       </Dialog>

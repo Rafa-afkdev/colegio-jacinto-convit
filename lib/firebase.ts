@@ -9,7 +9,7 @@ import toast from "react-hot-toast";
 
 // Your web app's Firebase configuration
 
-TODO ///===== CONFIGURACION DE PRUEBA ===== ///////
+/// TODO ===== CONFIGURACION DE PRUEBA ===== ///////
 const firebaseConfig = {
   apiKey: "AIzaSyDdZfFu9yTwGhHpQCgq4LEx8Vn89G9x3QA",
   authDomain: "uecal-bafd2.firebaseapp.com",
