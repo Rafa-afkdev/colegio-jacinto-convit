@@ -28,6 +28,22 @@ export default function VerEvaluaciones() {
     const [selectedAnio, setSelectedAnio] = useState<string>('');
     const [selectedSeccion, setSelectedSeccion] = useState<string>('');
 
+    // Función para normalizar cualquier formato de fecha a string legible
+    const normalizeDate = (date: any) => {
+        if (typeof date === 'string') return date;
+        if (date?.toDate) return date.toDate().toLocaleDateString('es-ES');
+        if (date instanceof Date) return date.toLocaleDateString('es-ES');
+        return 'Fecha no disponible';
+    };
+
+    // Función para normalizar fecha para ordenamiento (formato YYYY-MM-DD)
+    const normalizeDateForSorting = (date: any) => {
+        if (typeof date === 'string') return date;
+        if (date?.toDate) return date.toDate().toISOString().split('T')[0];
+        if (date instanceof Date) return date.toISOString().split('T')[0];
+        return '0000-00-00';
+    };
+
     const getEvaluaciones = async () => {
         const path = `evaluaciones`;
         const query = [where("docente_id", "==", user?.uid)];
@@ -36,16 +52,9 @@ export default function VerEvaluaciones() {
             if (!user || !user.uid) return;
             const res = await getCollection(path, query) as Evaluaciones[];
 
-            // Función para normalizar cualquier formato de fecha a string YYYY-MM-DD
-            const normalizeDate = (date: any) => {
-                if (typeof date === 'string') return date;
-                if (date?.toDate) return date.toDate().toISOString().split('T')[0];
-                if (date instanceof Date) return date.toISOString().split('T')[0];
-                return '0000-00-00';
-            };
             const sorted = res.sort((a, b) => {
-                const dateA = normalizeDate(a.fecha);
-                const dateB = normalizeDate(b.fecha);
+                const dateA = normalizeDateForSorting(a.fecha);
+                const dateB = normalizeDateForSorting(b.fecha);
                 return dateB.localeCompare(dateA);
             });
             setEvaluaciones(sorted);
@@ -170,33 +179,33 @@ export default function VerEvaluaciones() {
                                 </TableHeader>
                                 <TableBody>
                                 {filteredEvaluaciones.map((evaluacion) => {
-    const materia = materias.find(m => m.id === evaluacion.materia_id);
-    return (
-        <TableRow key={evaluacion.id} className="hover:bg-gray-100">
-            <TableCell>
-                <TooltipProvider>
-                    <Tooltip delayDuration={200}>
-                        <TooltipTrigger asChild>
-                            <span className="cursor-pointer underline">
-                                {evaluacion.nombre_evaluacion}
-                            </span>
-                        </TooltipTrigger>
-                        <TooltipContent side="top" className="max-w-[300px]">
-                            {renderCriteriosTooltip(evaluacion.criterios || [])}
-                        </TooltipContent>
-                    </Tooltip>
-                </TooltipProvider>
-            </TableCell>
-            <TableCell>{evaluacion.tipo_evaluacion}</TableCell>
-            <TableCell>{materia?.nombre} {materia?.año} {materia?.seccion}</TableCell>
-            <TableCell>{evaluacion.lapsop_id}</TableCell>
-            <TableCell>
-                {evaluacion.fecha}
-            </TableCell>
-            <TableCell>{evaluacion.status}</TableCell>
-        </TableRow>
-    );
-})}
+                                    const materia = materias.find(m => m.id === evaluacion.materia_id);
+                                    return (
+                                        <TableRow key={evaluacion.id} className="hover:bg-gray-100">
+                                            <TableCell>
+                                                <TooltipProvider>
+                                                    <Tooltip delayDuration={200}>
+                                                        <TooltipTrigger asChild>
+                                                            <span className="cursor-pointer underline">
+                                                                {evaluacion.nombre_evaluacion}
+                                                            </span>
+                                                        </TooltipTrigger>
+                                                        <TooltipContent side="top" className="max-w-[300px]">
+                                                            {renderCriteriosTooltip(evaluacion.criterios || [])}
+                                                        </TooltipContent>
+                                                    </Tooltip>
+                                                </TooltipProvider>
+                                            </TableCell>
+                                            <TableCell>{evaluacion.tipo_evaluacion}</TableCell>
+                                            <TableCell>{materia?.nombre} {materia?.año} {materia?.seccion}</TableCell>
+                                            <TableCell>{evaluacion.lapsop_id}</TableCell>
+                                            <TableCell>
+                                                {normalizeDate(evaluacion.fecha)}
+                                            </TableCell>
+                                            <TableCell>{evaluacion.status}</TableCell>
+                                        </TableRow>
+                                    );
+                                })}
                                 </TableBody>
                             </Table>
                             {!isLoading && filteredEvaluaciones.length === 0 && (
