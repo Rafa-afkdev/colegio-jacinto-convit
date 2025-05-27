@@ -224,7 +224,7 @@ export default function VerNotas() {
     // Función para obtener el resultado de aprobación (Aprobado/Reprobado)
     const getResultadoAprobacion = (puntaje: number) => {
         return puntaje >= 10 ? (
-            <Badge variant="success" className="bg-green-100 text-green-800 hover:bg-green-200">
+            <Badge variant="default" className="bg-green-100 text-green-800 hover:bg-green-200">
                 Aprobado
             </Badge>
         ) : (
