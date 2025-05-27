@@ -100,7 +100,7 @@ export default function SubirNotas() {
                 setCompletedEvaluaciones(completedIds)
                 
                 // Obtener los años disponibles
-                const años = [...new Set(sorted.map(e => e.año_seccion.toLowerCase()))]
+                const años = [...new Set(sorted.map(e => e.año_seccion?.toLowerCase() || ''))].filter(a => a !== '')
                 setAvailableAños(años)
                 
                 // Filtrar evaluaciones pendientes
@@ -133,7 +133,7 @@ export default function SubirNotas() {
         
         // Filtrar evaluaciones por año y obtener secciones disponibles
         const evaluacionesPorAño = availableEvaluaciones.filter(
-            e => e.año_seccion.toLowerCase() === selectedAño
+            e => e.año_seccion?.toLowerCase() === selectedAño
         )
         
         const secciones = [...new Set(evaluacionesPorAño.map(e => e.seccion_id))]
@@ -153,7 +153,7 @@ export default function SubirNotas() {
         
         // Filtrar evaluaciones por año y sección
         const evaluacionesFiltradas = availableEvaluaciones.filter(
-            e => e.año_seccion.toLowerCase() === selectedAño && e.seccion_id === selectedSeccion
+            e => e.año_seccion?.toLowerCase() === selectedAño && e.seccion_id === selectedSeccion
         )
         
         setFilteredEvaluaciones(evaluacionesFiltradas)
@@ -204,7 +204,7 @@ export default function SubirNotas() {
         try {
             // Obtener estudiantes del mismo año y sección que la evaluación y con estado INSCRITO
             const studentsQuery = [
-                where("año_actual", "==", evaluacion.año_seccion.toLowerCase()),
+                where("año_actual", "==", evaluacion.año_seccion?.toLowerCase() || ''),
                 where("seccion_actual", "==", evaluacion.seccion_id),
                 where("estado", "==", "INSCRITO")
             ]
