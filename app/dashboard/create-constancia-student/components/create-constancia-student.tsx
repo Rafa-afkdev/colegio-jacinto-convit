@@ -221,9 +221,9 @@ const generatePdfDocumentConstanciaDeEstudio = async (student: Students) => {
 
     // Content with formatted text and strict margin control
     const contentParts = [
-      { text: "Quien Suscribe, MSc. Efraín Infante, Titular de la C.I: ", font: arialFont },
-      { text: "11.235.943", font: boldFont },
-      { text: ", Director de la Unidad Educativa Colegio Adventista Libertador Código del Plantel PD00911201, Ubicada en el Casco Central Calle Fray Tomas Castro Cruce con Miranda Camaguán Estado Guárico, por medio de la presente hace constar que el (a) Estudiante: ", font: arialFont },
+      { text: "Quien Suscribe, MSc. Daniela Loreto, Titular de la C.I: ", font: arialFont },
+      { text: "16.913.040", font: boldFont },
+      { text: ", Directora de la Unidad Educativa Colegio Adventista Jacinto Convit García Código del Plantel PD14461208, Ubicada CR 9 ENTRE CALLES 6 Y 7 CASA NRO 6-54 SECTOR CASCO CENTRAL CALABOZO GUARICO ZONA POSTAL 2312, por medio de la presente hace constar que el (a) Estudiante: ", font: arialFont },
       { text: `${student.apellidos} ${student.nombres}`, font: boldFont, underline: true },
       { text: ", Titular de la C.I: ", font: arialFont },
       { text:"V-" + student.cedula.toString(), font: boldFont },
@@ -276,7 +276,7 @@ const generatePdfDocumentConstanciaDeEstudio = async (student: Students) => {
     currentY -= lineHeight * 2;
 
     // Date (ajustado para respetar márgenes)
-    const dateText = `Constancia que se expide a petición de parte interesada en Camaguán el día ${formatDate(new Date())}.`;
+    const dateText = `Constancia que se expide a petición de parte interesada en Calabozo el día ${formatDate(new Date())}.`;
     const dateWords = dateText.split(/\s+/).map(word => ({
       text: word,
       font: arialFont
@@ -314,8 +314,8 @@ const generatePdfDocumentConstanciaDeEstudio = async (student: Students) => {
   // Centered signature block
   const signatureTexts = [
     "________________________________",
-    "MSc. Efraín José Infante Garrido",
-    'DIRECTOR (A) DEL U.E.C.A. "LIBERTADOR"'
+    "MSc. Daniela Loreto",
+    'DIRECTOR (A) DEL U.E.C.A. "JACINTO CONVIT GARCÍA"'
   ];
 
   signatureTexts.forEach(text => {
@@ -462,9 +462,9 @@ const generatePdfDocumentConstanciaDeEstudio = async (student: Students) => {
     const headerTexts = [
       "República Bolivariana de Venezuela",
       "Ministerio del Poder Popular para la Educación",
-      'U.E. COLEGIO ADVENTISTA "LIBERTADOR"',
-      "Camaguán Estado Guárico",
-      "RIF-J-29797805-4",
+      'U.E. COLEGIO ADVENTISTA "Dr. JACINTO CONVIT GARCIA"',
+      "Calabozo Estado Guárico",
+      "RIF-J-J411658740",
     ];
 
     headerTexts.forEach((text) => {
@@ -489,9 +489,9 @@ const generatePdfDocumentConstanciaDeEstudio = async (student: Students) => {
 
     // Content with formatted text and strict margin control
     const contentParts = [
-      { text: "Quien Suscribe, MSc. Efraín Infante, Titular de la C.I: ", font: arialFont },
-      { text: "11.235.943", font: boldFont },
-      { text: ", Director de la U.E.C. Adventista Libertador , Ubicada en el Casco Central Calle Fray Tomas Castro Cruce con Miranda Camaguán Estado Guárico, por medio de la presente hace constar que el (a) Estudiante: ", font: arialFont },
+      { text: "Quien Suscribe, MSc. Daniela Loreto, Titular de la C.I: ", font: arialFont },
+      { text: "16.913.040", font: boldFont },
+      { text: ", Directora de la Unidad Educativa Colegio Adventista Jacinto Convit García Código del Plantel PD14461208, Ubicada CR 9 ENTRE CALLES 6 Y 7 CASA NRO 6-54 SECTOR CASCO CENTRAL CALABOZO GUARICO ZONA POSTAL 2312, por medio de la presente hace constar que el (a) Estudiante: ", font: arialFont },
       { text: `${student.apellidos} ${student.nombres}`, font: boldFont, underline: true },
       { text: ", Titular de la C.I: ", font: arialFont },
       { text:"V-" + student.cedula.toString(), font: boldFont },
@@ -582,8 +582,8 @@ const generatePdfDocumentConstanciaDeEstudio = async (student: Students) => {
   // Centered signature block
   const signatureTexts = [
     "________________________________",
-    "MSc. Efraín José Infante Garrido",
-    'DIRECTOR (A) DEL U.E.C.A. "LIBERTADOR"'
+    "MSc. Daniela Loreto",
+    'DIRECTORA DEL U.E.C.A "DR. JACINTO CONVIT GARCIA"'
   ];
 
   signatureTexts.forEach(text => {
