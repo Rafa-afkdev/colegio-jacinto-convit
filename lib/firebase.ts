@@ -11,13 +11,24 @@ import toast from "react-hot-toast";
 
 /// TODO ===== CONFIGURACION DE PRUEBA ===== ///////
 const firebaseConfig = {
-  apiKey: "AIzaSyDdZfFu9yTwGhHpQCgq4LEx8Vn89G9x3QA",
-  authDomain: "uecal-bafd2.firebaseapp.com",
-  databaseURL: "https://uecal-bafd2-default-rtdb.firebaseio.com",
-  projectId: "uecal-bafd2",
-  storageBucket: "uecal-bafd2.appspot.com",
-  messagingSenderId: "732721849653",
-  appId: "1:732721849653:web:00dbbcbe695f27a258d87c"
+//   apiKey: "AIzaSyDdZfFu9yTwGhHpQCgq4LEx8Vn89G9x3QA",
+//   authDomain: "uecal-bafd2.firebaseapp.com",
+//   databaseURL: "https://uecal-bafd2-default-rtdb.firebaseio.com",
+//   projectId: "uecal-bafd2",
+//   storageBucket: "uecal-bafd2.appspot.com",
+//   messagingSenderId: "732721849653",
+//   appId: "1:732721849653:web:00dbbcbe695f27a258d87c"
+
+
+apiKey: "AIzaSyCz9R60532pa0Jz96wMvWrl9IjBFA8QoyU",
+  authDomain: "colegiojacinto.firebaseapp.com",
+  projectId: "colegiojacinto",
+  storageBucket: "colegiojacinto.firebasestorage.app",
+  messagingSenderId: "110257133473",
+  appId: "1:110257133473:web:70e5f6bb2788e45ac49de0",
+  measurementId: "G-TP5NZEPX44"
+
+  
 };
 
 //TODO ///====== CONFIGURACION REAL (PRODUCCION)====//////
